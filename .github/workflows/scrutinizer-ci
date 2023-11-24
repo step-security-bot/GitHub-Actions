@@ -1,0 +1,8 @@
+build:
+  nodes:
+    analysis:
+      tests:
+        override:
+          # Add the respective Scrutinizer analysis for your language like
+          - yml-scrutinizer-run
+          - markdown--scrutinizer-run
