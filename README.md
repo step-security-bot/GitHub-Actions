@@ -26,3 +26,5 @@ My first GitHub Actions repo.
 ![GitHub repo contributors](https://img.shields.io/github/contributors-anon/MichaelHinrichs/GitHub-Actions?style=flat&logo=github&logoColor=whitesmoke&label=Contributors)
 ![GitHub language count](https://img.shields.io/github/languages/count/MichaelHinrichs/GitHub-Actions)
 ![GitHub language count](https://img.shields.io/github/languages/top/MichaelHinrichs/GitHub-Actions)
+
+![GitHub Contributors Image](https://contrib.rocks/image?repo=MichaelHinrichs/GitHub-Actions)
