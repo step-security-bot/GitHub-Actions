@@ -26,3 +26,5 @@ My first GitHub Actions repo.
 ![GitHub repo contributors](https://img.shields.io/github/contributors-anon/MichaelHinrichs/GitHub-Actions?style=flat&logo=github&logoColor=whitesmoke&label=Contributors)
 ![GitHub language count](https://img.shields.io/github/languages/count/MichaelHinrichs/GitHub-Actions)
 ![GitHub language count](https://img.shields.io/github/languages/top/MichaelHinrichs/GitHub-Actions)
+
+[![Space Metric](https://michaelhinrichs.testspace.com/spaces/250091/badge?token=755756c156d9232cfff5e6c58dfb93e2fc3cec01)](https://michaelhinrichs.testspace.com/spaces/250091?utm_campaign=metric&utm_medium=referral&utm_source=badge "Test Cases")
