@@ -1,0 +1,13 @@
+version = 1
+[[analyzers]]
+name = "secrets"
+enabled = true
+dependency_file_paths = [
+"testcontent/**"
+]
+[[analyzers]]
+name = "test-coverage"
+enabled = true
+dependency_file_paths = [
+"testcontent/**"
+]
