@@ -27,5 +27,10 @@ My first GitHub Actions repo.
 ![GitHub language count](https://img.shields.io/github/languages/count/MichaelHinrichs/GitHub-Actions)
 ![GitHub language count](https://img.shields.io/github/languages/top/MichaelHinrichs/GitHub-Actions)
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/f5a7e0d2c780c9985ada/maintainability)](https://codeclimate.com/github/MichaelHinrichs/GitHub-Actions/maintainability)
+[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability-percentage/MichaelHinrichs/GitHub-Actions?logo=codeClimate&label=maintainabilit%20percentage)](https://codeclimate.com/github/MichaelHinrichs/GitHub-Actions/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/f5a7e0d2c780c9985ada/test_coverage)](https://codeclimate.com/github/MichaelHinrichs/GitHub-Actions/test_coverage)
+[![Code Climate issues](https://img.shields.io/codeclimate/issues/MichaelHinrichs/GitHub-Actions?logo=codeClimate&label=issues)](https://codeclimate.com/github/MichaelHinrichs/GitHub-Actions/issues?status%5B%5D=)
+[![Code Climate technical debt](https://img.shields.io/codeclimate/tech-debt/MichaelHinrichs/GitHub-Actions?logo=codeClimate&label=technical%20debt)](https://codeclimate.com/github/MichaelHinrichs/GitHub-Actions)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8090/badge)](https://www.bestpractices.dev/projects/8090)
 [![Space Metric](https://michaelhinrichs.testspace.com/spaces/249200/badge?token=5cd031e1e3a7bde29ec2ed5e97d03fa0211af6dd)](https://michaelhinrichs.testspace.com/spaces/249200?utm_campaign=metric&utm_medium=referral&utm_source=badge "Test Cases")
