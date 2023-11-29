@@ -32,6 +32,7 @@ My first GitHub Actions repo.
 [![Test Coverage](https://api.codeclimate.com/v1/badges/f5a7e0d2c780c9985ada/test_coverage)](https://codeclimate.com/github/MichaelHinrichs/GitHub-Actions/test_coverage)
 [![Code Climate issues](https://img.shields.io/codeclimate/issues/MichaelHinrichs/GitHub-Actions?logo=codeClimate&label=issues)](https://codeclimate.com/github/MichaelHinrichs/GitHub-Actions/issues?status%5B%5D=)
 [![Code Climate technical debt](https://img.shields.io/codeclimate/tech-debt/MichaelHinrichs/GitHub-Actions?logo=codeClimate&label=technical%20debt)](https://codeclimate.com/github/MichaelHinrichs/GitHub-Actions)
+[![StyleCI](https://github.styleci.io/repos/711001396/shield?style=flat)](https://github.styleci.io/repos/711001396?branch=main)
 [![Open Source Helpers](https://www.codetriage.com/michaelhinrichs/github-actions/badges/users.svg)](https://www.codetriage.com/michaelhinrichs/github-actions)
 [![CodeFactor](https://www.codefactor.io/repository/github/michaelhinrichs/github-actions/badge)](https://www.codefactor.io/repository/github/michaelhinrichs/github-actions)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8090/badge)](https://www.bestpractices.dev/projects/8090)
