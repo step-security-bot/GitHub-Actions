@@ -28,7 +28,7 @@ My first GitHub Actions repo.
 ![GitHub language count](https://img.shields.io/github/languages/top/MichaelHinrichs/GitHub-Actions)
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/f5a7e0d2c780c9985ada/maintainability)](https://codeclimate.com/github/MichaelHinrichs/GitHub-Actions/maintainability)
-[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability-percentage/MichaelHinrichs/GitHub-Actions?logo=codeClimate&label=maintainabiliy%20percentage)](https://codeclimate.com/github/MichaelHinrichs/GitHub-Actions/maintainability)
+[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability-percentage/MichaelHinrichs/GitHub-Actions?logo=codeClimate&label=maintainability%20percentage)](https://codeclimate.com/github/MichaelHinrichs/GitHub-Actions/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/f5a7e0d2c780c9985ada/test_coverage)](https://codeclimate.com/github/MichaelHinrichs/GitHub-Actions/test_coverage)
 [![Code Climate issues](https://img.shields.io/codeclimate/issues/MichaelHinrichs/GitHub-Actions?logo=codeClimate&label=issues)](https://codeclimate.com/github/MichaelHinrichs/GitHub-Actions/issues?status%5B%5D=)
 [![Code Climate technical debt](https://img.shields.io/codeclimate/tech-debt/MichaelHinrichs/GitHub-Actions?logo=codeClimate&label=technical%20debt)](https://codeclimate.com/github/MichaelHinrichs/GitHub-Actions)
