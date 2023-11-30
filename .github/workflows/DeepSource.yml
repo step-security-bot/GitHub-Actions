@@ -16,6 +16,9 @@ jobs:
     strategy:
       matrix:
         os: [macos-latest, windows-latest, ubuntu-latest]
+    uses: actions/checkout@v3
+    with:
+      ref: ${{ github.event.pull_request.head.sha }}
     steps:
     - name: Report test coverage to DeepSource
       uses: deepsourcelabs/test-coverage-action@master
