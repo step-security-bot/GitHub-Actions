@@ -35,6 +35,7 @@ My first GitHub Actions repo.
 [![CodeFactor](https://www.codefactor.io/repository/github/michaelhinrichs/github-actions/badge)](https://www.codefactor.io/repository/github/michaelhinrichs/github-actions)
 [![StyleCI](https://github.styleci.io/repos/711001396/shield?style=flat)](https://github.styleci.io/repos/711001396?branch=main)
 [![Open Source Helpers](https://www.codetriage.com/michaelhinrichs/github-actions/badges/users.svg)](https://www.codetriage.com/michaelhinrichs/github-actions)
+[![infracost](https://img.shields.io/endpoint?url=https://dashboard.api.infracost.io/shields/json/1e57e27f-ffc4-4ed5-b312-8a8b12eeb27c/repos/c8a64742-346e-499e-bc15-227a4531381f/branch/098298e6-541d-490d-b373-e71fcc69777e)](https://dashboard.infracost.io/org/mchinrichs/repos/c8a64742-346e-499e-bc15-227a4531381f?tab=settings)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8090/badge)](https://www.bestpractices.dev/projects/8090)
 [![Space Metric](https://michaelhinrichs.testspace.com/spaces/249200/badge?token=5cd031e1e3a7bde29ec2ed5e97d03fa0211af6dd)](https://michaelhinrichs.testspace.com/spaces/249200?utm_campaign=metric&utm_medium=referral&utm_source=badge "Test Cases")
 
