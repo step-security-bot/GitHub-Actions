@@ -42,6 +42,7 @@ My first GitHub Actions repo.
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8090/badge)](https://www.bestpractices.dev/projects/8090)
 [![Space Metric](https://michaelhinrichs.testspace.com/spaces/249200/badge?token=5cd031e1e3a7bde29ec2ed5e97d03fa0211af6dd)](https://michaelhinrichs.testspace.com/spaces/249200?utm_campaign=metric&utm_medium=referral&utm_source=badge "Test Cases")
 [![Codeac](https://static.codeac.io/badges/2-711001396.svg "Codeac")](https://app.codeac.io/github/MichaelHinrichs/GitHub-Actions)
+[![Bors enabled](https://bors.tech/images/badge_small.svg)](https://ms-bors.herokuapp.com/repositories/77)
 
 [![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/michaelhinrichs/github-actions/general)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=MichaelHinrichs%2FGitHub-Actions&benchmark=INFRASTRUCTURE+SECURITY)
 [![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/michaelhinrichs/github-actions/cis_aws)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=MichaelHinrichs%2FGitHub-Actions&benchmark=CIS+AWS+V1.2)
