@@ -1,0 +1,22 @@
+on:
+  - push
+name: check-run-reporter
+jobs:
+  example:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+    steps:
+      - uses: actions/checkout@master
+      - name: Simulate test by copying example report to the report directory
+        run: |
+          mkdir -p ./reports/junit/
+          cp ./example/junit.xml ./reports/junit/
+        # Please use the latest git tag here.
+      - uses: check-run-reporter/action@v2.0.0
+        if: ${{ always() }}
+        with:
+          label: 'Unit Tests (${{ github.event_name }})'
+          report: 'reports/junit/**/*.xml'
+          token: ${{ secrets.CHECK_RUN_REPORTER_TOKEN }}
