@@ -2,7 +2,7 @@ on:
   push:
     branches:
       - main
-      - TestSpace
+      - check-run-reporter
 name: 'Testspace Setup CLI'
 description: 'Setup Testspace client to publish CI results from workflow to Dashboard; report flaky tests, metrics, graphs, and analytics'
 author: 'S2 Technologies, Inc.'
@@ -63,3 +63,50 @@ runs:
         fi
         testspace config url "${domain}" ${{ inputs.config-args }}
       shell: bash
+
+name: 'Check Run Reporter'
+description: |
+  A GitHub action for uploading structured test reports to check-run-reporter.com for reporting, stability analysic, and optimization.
+branding:
+  icon: 'check'
+  color: 'orange'
+inputs:
+  hostname:
+    description: Internal. Do not use unless directed. Supercedes --url
+    required: false
+  label:
+    description:
+      Label that should appear in the GitHub check. Defaults to the step's name.
+    required: false
+  nodeCount:
+    default: '1'
+    description: The total number of nodes you intend to spin up
+    required: false
+  nodeIndex:
+    default: '0'
+    description: This node's index.
+    required: false
+  report:
+    description: Path or glob to the job's report files. Separate multiple globs with a semicolon
+    required: false
+  tests:
+    description: Path or glob to the job's test files. Separate multiple globs with a semicolon
+    required: false
+  root:
+    description:
+      Defaults to `$(pwd)`. If you run your tests via a `uses` step, the default
+      should be fine, but if you run your tests via a `run` step, you may need
+      to speriment a bit to determine what working directory was set during your
+      tests.
+    required: false
+  token:
+    description:
+      Repo token to authenticate the upload. You can get your tokens from
+      [https://www.check-run-reporter.com/repos](https://www.check-run-reporter.com/repos).
+    required: true
+outputs:
+  tests:
+    description: The names of the test files to test on this node
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
