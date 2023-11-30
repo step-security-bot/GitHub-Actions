@@ -42,6 +42,8 @@ My first GitHub Actions repo.
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8090/badge)](https://www.bestpractices.dev/projects/8090)
 [![Space Metric](https://michaelhinrichs.testspace.com/spaces/249200/badge?token=5cd031e1e3a7bde29ec2ed5e97d03fa0211af6dd)](https://michaelhinrichs.testspace.com/spaces/249200?utm_campaign=metric&utm_medium=referral&utm_source=badge "Test Cases")
 [![Codeac](https://static.codeac.io/badges/2-711001396.svg "Codeac")](https://app.codeac.io/github/MichaelHinrichs/GitHub-Actions)
+[![DeepSource](https://app.deepsource.com/gh/MichaelHinrichs/GitHub-Actions.svg/?label=active+issues&show_trend=true&token=7w14SnfefsAvfJr0ZjARyyj6)](https://app.deepsource.com/gh/MichaelHinrichs/GitHub-Actions/)
+[![DeepSource](https://app.deepsource.com/gh/MichaelHinrichs/GitHub-Actions.svg/?label=resolved+issues&show_trend=true&token=7w14SnfefsAvfJr0ZjARyyj6)](https://app.deepsource.com/gh/MichaelHinrichs/GitHub-Actions/)
 
 [![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/michaelhinrichs/github-actions/general)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=MichaelHinrichs%2FGitHub-Actions&benchmark=INFRASTRUCTURE+SECURITY)
 [![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/michaelhinrichs/github-actions/cis_aws)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=MichaelHinrichs%2FGitHub-Actions&benchmark=CIS+AWS+V1.2)
