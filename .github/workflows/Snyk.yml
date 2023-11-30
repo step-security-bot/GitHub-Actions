@@ -1,0 +1,29 @@
+name: Snyk
+on: push
+jobs:
+  security:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+        dotnet-version: [ '5.0.x', '6.0.x', '7.0.x', '8.0.x']
+    steps:
+    - uses: actions/checkout@master
+    - uses: snyk/actions/setup@master
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: ${{ matrix.dotnet-version }}
+        
+    - name: Snyk monitor
+      run: snyk monitor
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+    
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
