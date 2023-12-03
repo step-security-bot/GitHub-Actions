@@ -3,7 +3,10 @@ on:
 name: check-run-reporter-windows
 jobs:
   example:
-    runs-on: windows-latest
+    runs-on:  ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
     steps:
       - uses: actions/checkout@master
       - name: Simulate test by copying example report to the report directory
