@@ -1,5 +1,8 @@
 on:
   workflow_dispatch:
+
+permissions: read-all
+
 jobs:
   use_api_via_script:
     runs-on: ${{ matrix.os }}

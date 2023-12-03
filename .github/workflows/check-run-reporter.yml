@@ -1,6 +1,9 @@
 on:
   - push
 name: check-run-reporter-windows
+
+permissions: read-all
+
 jobs:
   example:
     runs-on:  ${{ matrix.os }}
