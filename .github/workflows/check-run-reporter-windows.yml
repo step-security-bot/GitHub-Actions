@@ -1,6 +1,6 @@
 on:
   - push
-name: check-run-reporter
+name: check-run-reporter-windows
 jobs:
   example:
     runs-on: windows-latest
