@@ -2,7 +2,10 @@ on:
   workflow_dispatch:
 jobs:
   use_api_via_script:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
     permissions:
       issues: read
     steps:
