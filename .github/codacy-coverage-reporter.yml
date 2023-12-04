@@ -12,10 +12,6 @@ on:
         
 jobs:
   codacy-coverage-reporter:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [macos-latest, windows-latest, ubuntu-latest]
     name: codacy-coverage-reporter
     steps:
       - uses: actions/checkout@master
