@@ -1,6 +1,6 @@
 on:
   - push
-name: check-run-reporter-windows
+name: check-run-reporter
 
 permissions: read-all
 
