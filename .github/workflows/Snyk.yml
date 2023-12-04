@@ -9,7 +9,12 @@ jobs:
         dotnet-version: [ '5.0.x', '6.0.x', '7.0.x', '8.0.x']
     steps:
     - uses: actions/checkout@master
-    - uses: snyk/actions/setup@master
+
+    - name: Setup coreutils
+      run: sudo port install coreutils
+
+    - name: Setup Snyk
+      uses: snyk/actions/setup@master
     
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
