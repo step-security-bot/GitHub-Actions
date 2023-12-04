@@ -48,6 +48,7 @@ My first GitHub Actions repo.
 [![CodeScene System Mastery](https://codescene.io/projects/46884/status-badges/system-mastery)](https://codescene.io/projects/46884)
 [![CodeScene Missed Goals](https://codescene.io/projects/46884/status-badges/missed-goals)](https://codescene.io/projects/46884)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/39a8e7138b3e4d03b17e1db5201c9633)](https://app.codacy.com/gh/MichaelHinrichs/GitHub-Actions/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![GuardRails badge](https://api.guardrails.io/v2/badges/213325?token=ac7d729a63458d8165b16756efae5e9e230c37fda89f0e69754e0689e5b7b43d)](https://dashboard.guardrails.io/gh/MichaelHinrichs/repos/213325)
 
 [![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/michaelhinrichs/github-actions/general)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=MichaelHinrichs%2FGitHub-Actions&benchmark=INFRASTRUCTURE+SECURITY)
 [![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/michaelhinrichs/github-actions/cis_aws)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=MichaelHinrichs%2FGitHub-Actions&benchmark=CIS+AWS+V1.2)
