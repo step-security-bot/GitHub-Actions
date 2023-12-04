@@ -1,0 +1,27 @@
+on:
+  push:
+    branches: [main, Sentry]
+  pull_request:
+    branches: [main Sentry]
+  
+permissions: read-all
+
+jobs:
+  example:
+    runs-on:  ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Create Sentry release
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+        # SENTRY_URL: https://sentry.io/
+        with:
+          environment: production
