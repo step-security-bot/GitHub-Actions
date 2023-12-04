@@ -1,17 +1,13 @@
-name: Snyk
+name: Snyk Windows
 on: push
 jobs:
   security:
-    runs-on: ${{ matrix.os }}
+    runs-on: windows-latest
     strategy:
       matrix:
-        os: [macos-latest, windows-latest, ubuntu-latest]
         dotnet-version: [ '5.0.x', '6.0.x', '7.0.x', '8.0.x']
     steps:
     - uses: actions/checkout@master
-
-    - name: Setup coreutils
-      run: sudo port install coreutils
 
     - name: Setup Snyk
       uses: snyk/actions/setup@master
