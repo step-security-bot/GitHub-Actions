@@ -1,0 +1,13 @@
+version: '1'
+
+tools:
+  ansibleLint:
+    files:
+      - playbooks/**/*.yml
+      - roles/
+  tflint:
+    files:
+      - path/to/terraform
+  kubeval:
+    files:
+      - "**/*.yml"
