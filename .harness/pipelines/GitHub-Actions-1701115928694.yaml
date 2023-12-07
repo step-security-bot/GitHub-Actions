@@ -3,31 +3,278 @@ pipeline:
   name: Build GitHub-Actions
   orgIdentifier: default
   projectIdentifier: default_project
-  properties:
-    ci:
-      codebase:
-        build: <+input>
-        connectorRef: account.Github_OAuth_1700721772672
-        repoName: MichaelHinrichs/GitHub-Actions
   stages:
     - stage:
-        identifier: build
-        name: build
+        name: Harness Approval
+        identifier: Harness_Approval
+        description: ""
+        type: Approval
         spec:
-          cloneCodebase: true
           execution:
             steps:
               - step:
-                  identifier: echo
-                  name: echo
+                  name: Approve
+                  identifier: Approve
+                  type: HarnessApproval
+                  timeout: 1d
                   spec:
-                    command: echo hello world
-                  timeout: ""
-                  type: Run
-          platform:
-            arch: Amd64
-            os: Linux
-          runtime:
-            spec: {}
-            type: Cloud
-        type: CI
+                    approvalMessage: |-
+                      Please review the following information
+                      and approve the pipeline progression
+                    includePipelineExecutionHistory: true
+                    approvers:
+                      minimumCount: 1
+                      disallowPipelineExecutor: false
+                      userGroups:
+                        - account._account_all_users
+                        - _project_all_users
+                        - org._organization_all_users
+                    isAutoRejectEnabled: false
+                    approverInputs: []
+        tags: {}
+    - parallel:
+        - stage:
+            name: CloudBuild Win AMD
+            identifier: CloudBuild_Win_AMD
+            spec:
+              clonecodebase: false
+              execution:
+                steps:
+                  - parallel:
+                      - step:
+                          type: Run
+                          name: bash build
+                          identifier: bash_build
+                          spec:
+                            shell: Bash
+                            command: build
+                      - step:
+                          type: Run
+                          name: pwsh build
+                          identifier: pwsh_build
+                          spec:
+                            shell: Pwsh
+                            command: build
+                      - step:
+                          type: Run
+                          name: PowerShell build
+                          identifier: PowerShell_build
+                          spec:
+                            shell: Powershell
+                            command: build
+              platform:
+                os: Windows
+                arch: Amd64
+              runtime:
+                type: Cloud
+                spec: {}
+              caching:
+                enabled: false
+                paths: []
+            type: CI
+            description: ""
+        - stage:
+            name: CloudBuild Win ARM
+            identifier: CloudBuild_Win_ARM
+            description: ""
+            type: CI
+            spec:
+              clonecodebase: false
+              execution:
+                steps:
+                  - parallel:
+                      - step:
+                          type: Run
+                          name: bash build
+                          identifier: bash_build
+                          spec:
+                            shell: Bash
+                            command: build
+                      - step:
+                          type: Run
+                          name: pwsh build
+                          identifier: pwsh_build
+                          spec:
+                            shell: Pwsh
+                            command: build
+                      - step:
+                          type: Run
+                          name: PowerShell build
+                          identifier: PowerShell_build
+                          spec:
+                            shell: Powershell
+                            command: build
+              platform:
+                os: Windows
+                arch: Arm64
+              runtime:
+                type: Cloud
+                spec: {}
+        - stage:
+            name: LocalBuild Win AMD
+            identifier: LocalBuild_Win_AMD
+            description: ""
+            type: CI
+            spec:
+              clonecodebase: false
+              execution:
+                steps:
+                  - parallel:
+                      - step:
+                          type: Run
+                          name: bash build
+                          identifier: bash_build
+                          spec:
+                            shell: Bash
+                            command: build
+                      - step:
+                          type: Run
+                          name: pwsh build
+                          identifier: pwsh_build
+                          spec:
+                            shell: Pwsh
+                            command: build
+                      - step:
+                          type: Run
+                          name: PowerShell build
+                          identifier: PowerShell_build
+                          spec:
+                            shell: Powershell
+                            command: build
+              platform:
+                os: Windows
+                arch: Amd64
+              runtime:
+                type: Docker
+                spec: {}
+        - stage:
+            name: LocalBuild Win ARM
+            identifier: LocalBuild_Win_ARM
+            description: ""
+            type: CI
+            spec:
+              clonecodebase: false
+              execution:
+                steps:
+                  - parallel:
+                      - step:
+                          type: Run
+                          name: bash build
+                          identifier: bash_build
+                          spec:
+                            shell: Bash
+                            command: build
+                      - step:
+                          type: Run
+                          name: pwsh build
+                          identifier: pwsh_build
+                          spec:
+                            shell: Pwsh
+                            command: build
+                      - step:
+                          type: Run
+                          name: PowerShell build
+                          identifier: PowerShell_build
+                          spec:
+                            shell: Powershell
+                            command: build
+              platform:
+                os: Windows
+                arch: Arm64
+              runtime:
+                type: Docker
+                spec: {}
+        - stage:
+            name: CloudBuild Linux AMD
+            identifier: CloudBuild_Linux_AMD
+            description: ""
+            type: CI
+            spec:
+              clonecodebase: false
+              platform:
+                os: Linux
+                arch: Amd64
+              runtime:
+                type: Cloud
+                spec: {}
+              caching:
+                enabled: false
+                paths: []
+              execution:
+                steps:
+                  - step:
+                      type: Run
+                      name: build
+                      identifier: build
+                      spec:
+                        shell: Sh
+                        command: build
+        - stage:
+            name: CloudBuild Linux ARM
+            identifier: CloudBuild_Linux_ARM
+            description: ""
+            type: CI
+            spec:
+              clonecodebase: false
+              platform:
+                os: Linux
+                arch: Arm64
+              runtime:
+                type: Cloud
+                spec: {}
+              execution:
+                steps:
+                  - step:
+                      type: Run
+                      name: build
+                      identifier: build
+                      spec:
+                        shell: Sh
+                        command: build
+              caching:
+                enabled: false
+                paths: []
+        - stage:
+            name: LocalBuild Linux AMD
+            identifier: LocalBuild_Linux_AMD
+            description: ""
+            type: CI
+            spec:
+              clonecodebase: false
+              platform:
+                os: Linux
+                arch: Amd64
+              runtime:
+                type: Docker
+                spec: {}
+              execution:
+                steps:
+                  - step:
+                      type: Run
+                      name: build
+                      identifier: build
+                      spec:
+                        shell: Sh
+                        command: build
+        - stage:
+            name: LocalBuild Linux ARM
+            identifier: LocalBuild_Linux_ARM
+            description: ""
+            type: CI
+            spec:
+              clonecodebase: false
+              platform:
+                os: Linux
+                arch: Arm64
+              runtime:
+                type: Docker
+                spec: {}
+              execution:
+                steps:
+                  - step:
+                      type: Run
+                      name: build
+                      identifier: build
+                      spec:
+                        shell: Sh
+                        command: build
