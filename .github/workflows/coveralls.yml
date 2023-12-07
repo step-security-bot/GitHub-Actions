@@ -1,0 +1,25 @@
+name: coveralls Action
+on:
+  push:
+    branches:
+    - main
+    - coveralls
+  pull_request:
+    branches:
+    - main
+    - coveralls
+
+permissions: read-all
+
+jobs:
+  DoSomthing:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        
+      - name: Coveralls GitHub Action
+      - uses: coverallsapp/github-action@v2.2.3
