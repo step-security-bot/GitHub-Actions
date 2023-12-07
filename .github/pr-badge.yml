@@ -4,3 +4,107 @@
   color: "blue"
   url: "https://jira.company.com/browse/$issuePrefix"
   when: "$issuePrefix"
+
+- label: "Preview"
+  message: "PR-$prNumber"
+  color: "blue"
+  url: "https://pr-$prNumber.company.com"
+
+- label: "PR Size"
+  message: "Large"
+  color: "red"
+  when: "$additions >= 500"
+
+- label: "PR Size"
+  message: "Medium"
+  color: "yellow"
+  when: "$additions > 200 && $additions < 500"
+
+- label: "Waiting for"
+  message: "QA"
+  color: yellow
+  when: "$payload.pull_request.body.includes('- [ ] QA')"
+
+- label: "Passed"
+  message: "QA"
+  color: green
+  when: "$payload.pull_request.body.includes('- [x] QA')"
+
+- imageUrl: "https://circleci.com/gh/$owner/$repo.svg?style=svg"
+  url: "https://app.circleci.com/pipelines/github/$owner/$repo?branch=$branchName"
+
+- imageUrl: https://github.com/$owner/$repo/actions/workflows/ci.yml/badge.svg?branch=$branchName
+  url: https://github.com/$owner/$repo/actions/workflows/ci.yml?query=branch:$branchName
+
+- label: "CI"
+  message: "Jenkins"
+  color: "blue"
+  url: "https://jenkins.company.com/job/<project>/job/<job>/view/change-requests/job/PR-$prNumber"
+
+- label: "Link"
+  message: "ArgoCD"
+  color: "blue"
+  url: "https://argocd.company.com/applications/$repo"
+
+- label: "Error"
+  message: "Wrong target branch"
+  color: "red"
+  when: "$targetBranchName != 'main'"
+
+- imageUrl: "https://api.qrserver.com/v1/create-qr-code/?size=50x50&data=https://pr-$prNumber.company.com"
+  url: "https://pr-$prNumber.company.com"
+
+- message: "$author"
+  color: "green"
+
+- label: "Missing"
+  message: "Test plan"
+  color: "red"
+  when: "$payload.pull_request.body.includes('Test plan') === false"
+
+- message: "Work in Progress"
+  color: "yellow"
+  when: "$payload.pull_request.title.includes('WIP')"
+
+- label: "Warn"
+  message: "Unchecked Tasks"
+  color: "yellow"
+  when: "$payload.pull_request.body.includes('- [ ]')"
+
+- message: "Work in Progress"
+  color: "yellow"
+  when: "$payload.pull_request.title.includes('WIP')"
+
+- label: "Warn"
+  message: "Unchecked Tasks"
+  color: "yellow"
+  when: "$payload.pull_request.body.includes('- [ ]')"
+
+- label: "Warn"
+  message: "Missing labels"
+  color: yellow
+  when: "$payload.pull_request.labels.length === 0"
+
+- label: "Warn"
+  message: "Description is missing"
+  color: "yellow"
+
+- message: "Outside contributor"
+  color: "#000000"
+  when: "$payload.pull_request.author_association == 'NONE'"
+
+- message: "First time contributor"
+  color: "#000000"
+  when: "$payload.pull_request.author_association == 'FIRST_TIME_CONTRIBUTOR'"
+
+- message: "New GitHub user"
+  color: "#000000"
+  when: "$payload.pull_request.author_association == 'FIRST_TIMER'"
+
+- message: "Contributor"
+  color: "#000000"
+  when: "$payload.pull_request.author_association == 'CONTRIBUTOR'"
+
+- label: "Label"
+  message: "Feature"
+  when: "$labels.includes('Feature')"
