@@ -1,10 +1,12 @@
 name: Testspace Action
 on:
   push:
+    branches: [main, coveralls]
     paths-ignore:
       - '**.md'
       - 'docs/**'
   pull_request:
+    branches: [main, coveralls]
     paths-ignore:
       - '**.md'
       - 'docs/**'
