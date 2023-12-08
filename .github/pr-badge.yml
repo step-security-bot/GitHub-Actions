@@ -23,7 +23,7 @@
 - label: "PR Size"
   message: "Small"
   color: "green"
-  when: "$additions < 200"
+  when: "$additions <= 200"
 
 - label: "Waiting for"
   message: "QA"
