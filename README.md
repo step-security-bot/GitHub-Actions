@@ -40,6 +40,7 @@ My first GitHub Actions repo.
 [![Open Source Helpers](https://www.codetriage.com/michaelhinrichs/github-actions/badges/users.svg)](https://www.codetriage.com/michaelhinrichs/github-actions)
 [![infracost](https://img.shields.io/endpoint?url=https://dashboard.api.infracost.io/shields/json/1e57e27f-ffc4-4ed5-b312-8a8b12eeb27c/repos/c8a64742-346e-499e-bc15-227a4531381f/branch/098298e6-541d-490d-b373-e71fcc69777e)](https://dashboard.infracost.io/org/mchinrichs/repos/c8a64742-346e-499e-bc15-227a4531381f?tab=settings)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8090/badge)](https://www.bestpractices.dev/projects/8090)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/MichaelHinrichs/GitHub-Actions/badge)](https://securityscorecards.dev/viewer/?uri=github.com/MichaelHinrichs/GitHub-Actions)
 [![Space Metric](https://michaelhinrichs.testspace.com/spaces/249200/badge?token=5cd031e1e3a7bde29ec2ed5e97d03fa0211af6dd)](https://michaelhinrichs.testspace.com/spaces/249200?utm_campaign=metric&utm_medium=referral&utm_source=badge "Test Cases")
 [![Codeac](https://static.codeac.io/badges/2-711001396.svg "Codeac")](https://app.codeac.io/github/MichaelHinrichs/GitHub-Actions)
 [![Bors enabled](https://bors.tech/images/badge_small.svg)](https://ms-bors.herokuapp.com/repositories/77)
