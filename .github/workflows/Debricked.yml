@@ -1,0 +1,23 @@
+name: Debricked scan
+
+on:
+  pull_request:
+    branches: [ "main", "Debricked" ]
+
+permissions: read-all
+
+jobs:
+  vulnerabilities-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@eb238b55efaa70779f274895e782ed17c84f2895 # v2.6.1
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # v3.1.0
+      - uses: debricked/actions/cache@3fb2c2e140eac95758e82f507df6c80a8172e643 # v3.1.0
+      - uses: debricked/actions/resolve-non-docker@3fb2c2e140eac95758e82f507df6c80a8172e643 # v3.1.0
+        env:
+          DEBRICKED_TOKEN: ${{ secrets.DEBRICKED_TOKEN }}
