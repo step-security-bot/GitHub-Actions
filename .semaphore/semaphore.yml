@@ -66,6 +66,34 @@ blocks:
         commands:
           - sleep 10
           - echo "Build completed"
+
+    - name: "Build for Android"
+    dependencies: ["Code quality checks", "Frontend Build", "Backend Build"]
+    task:
+      jobs:
+      - name: "Build"
+        commands:
+          - echo "Build completed"
+
+  - name: "Build for iOS"
+    dependencies: ["Code quality checks", "Frontend Build", "Backend Build"]
+    task:
+      agent:
+        machine:
+          type: a1-standard-4
+          os_image: macos-mojave
+      jobs:
+      - name: "Build"
+        commands:
+          - echo "Build completed"
+
+  - name: "Build for Web"
+    dependencies: ["Code quality checks", "Frontend Build", "Backend Build"]
+    task:
+      jobs:
+      - name: "Build"
+        commands:
+          - echo "Build completed"
           
   - name: "Backend Unit tests"
     dependencies: ["Backend Build"]
@@ -109,6 +137,43 @@ blocks:
           - sleep 10
           - echo "Unit tests 3/3 completed"
 
+  - name: "Test on Android"
+    dependencies: ["Build for Android", "Unit tests"]
+    task:
+      jobs:
+      - name: "Tests 1/2"
+        commands:
+          - echo "Test completed"
+      - name: "Tests 2/2"
+        commands:
+          - echo "Test completed"
+
+  - name: "Test on iOS"
+    dependencies: ["Build for iOS", "Unit tests"]
+    task:
+      agent:
+        machine:
+          type: a1-standard-4
+          os_image: macos-mojave
+      jobs:
+      - name: "Tests"
+        commands:
+          - echo "Test completed"
+
+  - name: "Test on Web"
+    dependencies: ["Build for Web", "Unit tests"]
+    task:
+      jobs:
+      - name: "Tests 1/3"
+        commands:
+          - echo "Test completed"
+      - name: "Tests 2/3"
+        commands:
+          - echo "Test completed"
+      - name: "Tests 3/3"
+        commands:
+          - echo "Test completed"
+
   - name: "Integration tests"
     dependencies: ["Unit tests"]
     task:
@@ -143,10 +208,19 @@ blocks:
           - echo "Perf completed"
 
   - name: "Release candidate"
-    dependencies: ["Integration tests", "Long perf tests", "Security checks", "E2E tests"]
+    dependencies: ["Integration tests", "Long perf tests", "Security checks", "E2E tests", "Test on Android", "Test on iOS", "Test on Web"]
     task:
       jobs:
       - name: "Release"
         commands:
           - sleep 10
           - echo "Release completed"
+      - name: "🚀 Google Play"
+        commands:
+          - echo "Release completed"
+      - name: "🚀 AppStore"
+        commands:
+          - echo "Release completed"
+      - name: "🚀 Web"
+        commands:
+          - echo "Rollout completed"
