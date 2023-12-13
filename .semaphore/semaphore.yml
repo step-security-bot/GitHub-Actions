@@ -63,7 +63,7 @@ blocks:
           - sleep 10
           - echo "Integration tests 2/3 completed"
 
- - name: "E2E tests"
+  - name: "E2E tests"
     dependencies: ["Dockerize"]
     task:
       jobs:
