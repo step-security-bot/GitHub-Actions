@@ -67,7 +67,7 @@ blocks:
           - sleep 10
           - echo "Build completed"
 
-    - name: "Build for Android"
+  - name: "Build for Android"
     dependencies: ["Code quality checks", "Frontend Build", "Backend Build"]
     task:
       jobs:
