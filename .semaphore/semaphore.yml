@@ -6,8 +6,24 @@ agent:
     os_image: ubuntu1804
 
 blocks:
-  - name: "Code quality checks"
+  - name: "Backend Lint"
     dependencies: []
+    task:
+      jobs:
+      - name: "Lint"
+        commands:
+          - echo "Backend Lint completed"
+
+  - name: "Frontend Lint"
+    dependencies: []
+    task:
+      jobs:
+      - name: "Lint"
+        commands:
+          - echo "Frontend Lint completed"
+          
+  - name: "Code quality checks"
+    dependencies: ["Backend Lint", "Frontend Lint"]
     task:
       jobs:
       - name: "Lint"
@@ -24,17 +40,60 @@ blocks:
           - sleep 10
           - echo "Scan completed"
 
+  - name: "Backend Build"
+    dependencies: ["Backend Lint"]
+    task:
+      jobs:
+      - name: "Build"
+        commands:
+          - sleep 10
+          - echo "Backend Build completed"
+
+  - name: "Frontend Build"
+    dependencies: ["Frontend Lint"]
+    task:
+      jobs:
+      - name: "Build"
+        commands:
+          - sleep 10
+          - echo "Frontend Build completed"
+
   - name: "Dockerize"
-    dependencies: ["Code quality checks"]
+    dependencies: ["Code quality checks", "Frontend Build", "Backend Build"]
     task:
       jobs:
       - name: "Build"
         commands:
           - sleep 10
           - echo "Build completed"
+          
+  - name: "Backend Unit tests"
+    dependencies: ["Backend Build"]
+    task:
+      jobs:
+      - name: "Unit tests 1/3"
+        commands:
+          - echo "Unit tests 1/3 completed"
+      - name: "Unit tests 2/3"
+        commands:
+          - echo "Unit tests 2/3 completed"
+      - name: "Unit tests 3/3"
+        commands:
+          - echo "Unit tests 3/3 completed"
 
+  - name: "Frontend Unit tests"
+    dependencies: ["Frontend Build"]
+    task:
+      jobs:
+      - name: "Unit tests 1/2"
+        commands:
+          - echo "Unit tests 1/2 completed"
+      - name: "Unit tests 2/2"
+        commands:
+          - echo "Unit tests 2/2 completed"
+          
   - name: "Unit tests"
-    dependencies: ["Dockerize"]
+    dependencies: ["Dockerize", "Frontend Unit tests", "Backend Unit tests"]
     task:
       jobs:
       - name: "Unit tests 1/3"
@@ -64,12 +123,16 @@ blocks:
           - echo "Integration tests 2/3 completed"
 
   - name: "E2E tests"
-    dependencies: ["Dockerize"]
     task:
       jobs:
       - name: "E2E tests"
+        dependencies: ["Dockerize"]
         commands:
           - echo "E2E completed"
+      - name: "Nightwatch 🦉"
+        dependencies: ["Backend Unit tests", "Frontend Unit tests"]
+        commands:
+          - echo "Nightwatch done"
 
   - name: "Long perf tests"
     dependencies: ["Dockerize"]
