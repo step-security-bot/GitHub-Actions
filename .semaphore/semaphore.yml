@@ -123,14 +123,13 @@ blocks:
           - echo "Integration tests 2/3 completed"
 
   - name: "E2E tests"
+    dependencies: ["Dockerize", "Backend Unit tests", "Frontend Unit tests"]
     task:
       jobs:
       - name: "E2E tests"
-        dependencies: ["Dockerize"]
         commands:
           - echo "E2E completed"
       - name: "Nightwatch 🦉"
-        dependencies: ["Backend Unit tests", "Frontend Unit tests"]
         commands:
           - echo "Nightwatch done"
 
