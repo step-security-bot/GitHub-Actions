@@ -1,6 +1,8 @@
 name: Debricked scan
 
 on:
+  push:
+    branches: [ "main", "Debricked" ]
   pull_request:
     branches: [ "main", "Debricked" ]
 
