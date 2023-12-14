@@ -1,0 +1,23 @@
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [main, BridgeCrew]
+  pull_request:
+    branches: [main, BridgeCrew]
+
+permissions: read-all
+jobs:
+  BridgeCrew:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Run Prisma Cloud 
+        id: prisma-cloud
+        uses: bridgecrewio/checkov-action@master 
+        with:
+          api-key: ${{ secrets.BC_API_KEY }}
