@@ -6,6 +6,9 @@ on:
       - SonarCloud
   pull_request:
     types: [opened, synchronize, reopened]
+
+permissions: read-all
+
 jobs:
   sonarcloud:
     name: SonarCloud
