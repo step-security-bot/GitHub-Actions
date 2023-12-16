@@ -1,0 +1,12 @@
+name: Run Cirrus Tasks
+
+on: [push, pull_request]
+
+permissions: read-all
+
+jobs:
+  cirrus:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: cirruslabs/cirrus-action@master
