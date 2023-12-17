@@ -10,7 +10,7 @@ permissions: read-all
 
 jobs:
   analysis:
-    name: Scorecard analysis
+    name: Northflank
     runs-on: ubuntu-latest
     steps:
     - name: Deploy to Northflank
