@@ -1,0 +1,79 @@
+name: appcircle
+on:
+  push:
+    branches:
+    - main
+    - appcircle
+  pull_request:
+    branches:
+    - main
+    - appcircle
+
+permissions: read-all
+  
+jobs:
+  appcircle:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        
+      - name: Android JavaKotlin Metadata
+        uses: appcircleio/appcircle-workflows/Android-JavaKotlin-Metadata.yaml@latest
+      - name: Android ReactNative Metadata
+        uses: appcircleio/appcircle-workflows/Android-ReactNative-Metadata.yaml@latest
+      - name: iOS Flutter Metadata
+        uses: appcircleio/appcircle-workflows/iOS-Flutter-Metadata.yaml@latest
+      - name: iOS ObjectiveCSwift Metadata
+        uses: appcircleio/appcircle-workflows/iOS-ObjectiveCSwift-Metadata.yaml@latest
+      - name: iOS ReactNative Metadata
+        uses: appcircleio/appcircle-workflows/iOS-ReactNative-Metadata.yaml@latest
+        
+      - name: Android Flutter Merge
+        uses: appcircleio/appcircle-workflows/Android-Flutter-Merge.yaml@latest
+      - name: Android JavaKotlin Merge
+        uses: appcircleio/appcircle-workflows/Android-JavaKotlin-Merge.yaml@latest
+      - name: Android ReactNative Merge
+        uses: appcircleio/appcircle-workflows/Android-ReactNative-Merge.yaml@latest
+      - name: Android Smartface Merge
+        uses: appcircleio/appcircle-workflows/Android-Smartface-Merge.yaml@latest
+      - name: iOS Flutter Merge
+        uses: appcircleio/appcircle-workflows/iOS-Flutter-Merge.yaml@latest
+      - name: iOS ObjectiveCSwift Merge
+        uses: appcircleio/appcircle-workflows/iOS-ObjectiveCSwift-Merge.yaml@latest
+      - name: iOS ReactNative Merge
+        uses: appcircleio/appcircle-workflows/iOS-ReactNative-Merge.yaml@latest
+      - name: iOS Smartface Merge
+        uses: appcircleio/appcircle-workflows/iOS-Smartface-Merge.yaml@latest
+        
+      - name: Android Flutter Build
+        uses: appcircleio/appcircle-workflows/Android-Flutter-Build.yaml@latest
+      - name: Android JavaKotlin Build
+        uses: appcircleio/appcircle-workflows/Android-JavaKotlin-Build.yaml@latest
+      - name: Android ReactNative Build
+        uses: appcircleio/appcircle-workflows/Android-ReactNative-Build.yaml@latest
+      - name: iOS Flutter Build
+        uses: appcircleio/appcircle-workflows/iOS-Flutter-Build.yaml@latest
+      - name: Android Smartface Build
+        uses: appcircleio/appcircle-workflows/Android-Smartface-Build.yaml@latest
+      - name: iOS ObjectiveCSwift Build
+        uses: appcircleio/appcircle-workflows/iOS-ObjectiveCSwift-Build.yaml@latest
+      - name: iOS ReactNative Build
+        uses: appcircleio/appcircle-workflows/iOS-ReactNative-Build.yaml@latest
+      - name: iOS Smartface Build
+        uses: appcircleio/appcircle-workflows/iOS-Smartface-Build.yaml@latest
+        
+      - name: Android Resign
+        uses: appcircleio/appcircle-workflows/Android-Resign.yaml@latest
+      - name: iOS Resign
+        uses: appcircleio/appcircle-workflows/iOS-Resign.yaml@latest
+        
+      - name: Android GooglePlayStore StoreSubmit
+        uses: appcircleio/appcircle-workflows/Android-GooglePlayStore-StoreSubmit.yaml@latest
+      - name: Android HuaweiAppGallery StoreSubmit
+        uses: appcircleio/appcircle-workflows/Android-HuaweiAppGallery-StoreSubmit.yaml@latest
+      - name: iOS StoreSubmit
+        uses: appcircleio/appcircle-workflows/iOS-StoreSubmit.yaml@latest
