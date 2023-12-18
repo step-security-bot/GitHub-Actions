@@ -42,6 +42,7 @@ My first GitHub Actions repo.
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8090/badge)](https://www.bestpractices.dev/projects/8090)
 [![Space Metric](https://michaelhinrichs.testspace.com/spaces/249200/badge?token=5cd031e1e3a7bde29ec2ed5e97d03fa0211af6dd)](https://michaelhinrichs.testspace.com/spaces/249200?utm_campaign=metric&utm_medium=referral&utm_source=badge "Test Cases")
 [![Codeac](https://static.codeac.io/badges/2-711001396.svg "Codeac")](https://app.codeac.io/github/MichaelHinrichs/GitHub-Actions)
+[![DeepScan grade](https://deepscan.io/api/teams/22823/projects/26112/branches/827264/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=22823&pid=26112&bid=827264)
 [![Bors enabled](https://bors.tech/images/badge_small.svg)](https://ms-bors.herokuapp.com/repositories/77)
 [![CodeScene general](https://codescene.io/images/analyzed-by-codescene-badge.svg)](https://codescene.io/projects/46884)
 [![CodeScene Code Health](https://codescene.io/projects/46884/status-badges/code-health)](https://codescene.io/projects/46884)
