@@ -1,222 +1,241 @@
-version: "v1.0"
+version: v1.0
 name: Pipeline with parallel blocks
 agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
-
 blocks:
-  - name: "Backend Lint"
+  - name: Backend Lint
     dependencies: []
     task:
       jobs:
-      - name: "Lint"
-        commands:
-          - echo "Backend Lint completed"
-
-  - name: "Frontend Lint"
+        - name: Lint
+          commands:
+            - echo "Backend Lint completed"
+  - name: Frontend Lint
     dependencies: []
     task:
       jobs:
-      - name: "Lint"
-        commands:
-          - echo "Frontend Lint completed"
-          
-  - name: "Code quality checks"
-    dependencies: ["Backend Lint", "Frontend Lint"]
+        - name: Lint
+          commands:
+            - echo "Frontend Lint completed"
+  - name: Code quality checks
+    dependencies:
+      - Backend Lint
+      - Frontend Lint
     task:
       jobs:
-      - name: "Lint"
-        commands:
-          - sleep 10
-          - echo "Lint completed"
-
-  - name: "Security checks"
+        - name: Lint
+          commands:
+            - sleep 10
+            - echo "Lint completed"
+  - name: Security checks
     dependencies: []
     task:
       jobs:
-      - name: "Scan"
-        commands:
-          - sleep 10
-          - echo "Scan completed"
-
-  - name: "Backend Build"
-    dependencies: ["Backend Lint"]
+        - name: Scan
+          commands:
+            - sleep 10
+            - echo "Scan completed"
+  - name: Backend Build
+    dependencies:
+      - Backend Lint
     task:
       jobs:
-      - name: "Build"
-        commands:
-          - sleep 10
-          - echo "Backend Build completed"
-
-  - name: "Frontend Build"
-    dependencies: ["Frontend Lint"]
+        - name: Build
+          commands:
+            - sleep 10
+            - echo "Backend Build completed"
+  - name: Frontend Build
+    dependencies:
+      - Frontend Lint
     task:
       jobs:
-      - name: "Build"
-        commands:
-          - sleep 10
-          - echo "Frontend Build completed"
-
-  - name: "Dockerize"
-    dependencies: ["Code quality checks", "Frontend Build", "Backend Build"]
+        - name: Build
+          commands:
+            - sleep 10
+            - echo "Frontend Build completed"
+  - name: Dockerize
+    dependencies:
+      - Code quality checks
+      - Frontend Build
+      - Backend Build
     task:
       jobs:
-      - name: "Build"
-        commands:
-          - sleep 10
-          - echo "Build completed"
-
-  - name: "Build for Android"
-    dependencies: ["Code quality checks", "Frontend Build", "Backend Build"]
+        - name: Build
+          commands:
+            - sleep 10
+            - echo "Build completed"
+  - name: Build for Android
+    dependencies:
+      - Code quality checks
+      - Frontend Build
+      - Backend Build
     task:
       jobs:
-      - name: "Build"
-        commands:
-          - echo "Build completed"
-
-  - name: "Build for iOS"
-    dependencies: ["Code quality checks", "Frontend Build", "Backend Build"]
+        - name: Build
+          commands:
+            - echo "Build completed"
+  - name: Build for iOS
+    dependencies:
+      - Code quality checks
+      - Frontend Build
+      - Backend Build
     task:
       agent:
         machine:
           type: a1-standard-4
           os_image: macos-xcode13
       jobs:
-      - name: "Build"
-        commands:
-          - echo "Build completed"
-
-  - name: "Build for Web"
-    dependencies: ["Code quality checks", "Frontend Build", "Backend Build"]
+        - name: Build
+          commands:
+            - echo "Build completed"
+  - name: Build for Web
+    dependencies:
+      - Code quality checks
+      - Frontend Build
+      - Backend Build
     task:
       jobs:
-      - name: "Build"
-        commands:
-          - echo "Build completed"
-          
-  - name: "Backend Unit tests"
-    dependencies: ["Backend Build"]
+        - name: Build
+          commands:
+            - echo "Build completed"
+  - name: Backend Unit tests
+    dependencies:
+      - Backend Build
     task:
       jobs:
-      - name: "Unit tests 1/3"
-        commands:
-          - echo "Unit tests 1/3 completed"
-      - name: "Unit tests 2/3"
-        commands:
-          - echo "Unit tests 2/3 completed"
-      - name: "Unit tests 3/3"
-        commands:
-          - echo "Unit tests 3/3 completed"
-
-  - name: "Frontend Unit tests"
-    dependencies: ["Frontend Build"]
+        - name: Unit tests 1/3
+          commands:
+            - echo "Unit tests 1/3 completed"
+        - name: Unit tests 2/3
+          commands:
+            - echo "Unit tests 2/3 completed"
+        - name: Unit tests 3/3
+          commands:
+            - echo "Unit tests 3/3 completed"
+  - name: Frontend Unit tests
+    dependencies:
+      - Frontend Build
     task:
       jobs:
-      - name: "Unit tests 1/2"
-        commands:
-          - echo "Unit tests 1/2 completed"
-      - name: "Unit tests 2/2"
-        commands:
-          - echo "Unit tests 2/2 completed"
-          
-  - name: "Unit tests"
-    dependencies: ["Dockerize", "Frontend Unit tests", "Backend Unit tests"]
+        - name: Unit tests 1/2
+          commands:
+            - echo "Unit tests 1/2 completed"
+        - name: Unit tests 2/2
+          commands:
+            - echo "Unit tests 2/2 completed"
+  - name: Unit tests
+    dependencies:
+      - Dockerize
+      - Frontend Unit tests
+      - Backend Unit tests
     task:
       jobs:
-      - name: "Unit tests 1/3"
-        commands:
-          - sleep 10
-          - echo "Unit tests 1/3 completed"
-      - name: "Unit tests 2/3"
-        commands:
-          - sleep 10
-          - echo "Unit tests 2/3 completed"
-      - name: "Unit tests 3/3"
-        commands:
-          - sleep 10
-          - echo "Unit tests 3/3 completed"
-
-  - name: "Test on Android"
-    dependencies: ["Build for Android", "Unit tests"]
+        - name: Unit tests 1/3
+          commands:
+            - sleep 10
+            - echo "Unit tests 1/3 completed"
+        - name: Unit tests 2/3
+          commands:
+            - sleep 10
+            - echo "Unit tests 2/3 completed"
+        - name: Unit tests 3/3
+          commands:
+            - sleep 10
+            - echo "Unit tests 3/3 completed"
+  - name: Test on Android
+    dependencies:
+      - Build for Android
+      - Unit tests
     task:
       jobs:
-      - name: "Tests 1/2"
-        commands:
-          - echo "Test completed"
-      - name: "Tests 2/2"
-        commands:
-          - echo "Test completed"
-
-  - name: "Test on iOS"
-    dependencies: ["Build for iOS", "Unit tests"]
+        - name: Tests 1/2
+          commands:
+            - echo "Test completed"
+        - name: Tests 2/2
+          commands:
+            - echo "Test completed"
+  - name: Test on iOS
+    dependencies:
+      - Build for iOS
+      - Unit tests
     task:
       jobs:
-      - name: "Tests"
-        commands:
-          - echo "Test completed"
-
-  - name: "Test on Web"
-    dependencies: ["Build for Web", "Unit tests"]
+        - name: Tests
+          commands:
+            - echo "Test completed"
+  - name: Test on Web
+    dependencies:
+      - Build for Web
+      - Unit tests
     task:
       jobs:
-      - name: "Tests 1/3"
-        commands:
-          - echo "Test completed"
-      - name: "Tests 2/3"
-        commands:
-          - echo "Test completed"
-      - name: "Tests 3/3"
-        commands:
-          - echo "Test completed"
-
-  - name: "Integration tests"
-    dependencies: ["Unit tests"]
+        - name: Tests 1/3
+          commands:
+            - echo "Test completed"
+        - name: Tests 2/3
+          commands:
+            - echo "Test completed"
+        - name: Tests 3/3
+          commands:
+            - echo "Test completed"
+  - name: Integration tests
+    dependencies:
+      - Unit tests
     task:
       jobs:
-      - name: "Integration tests 1/3"
-        commands:
-          - sleep 10
-          - echo "Integration tests 1/3 completed"
-      - name: "Integration tests 2/3"
-        commands:
-          - sleep 10
-          - echo "Integration tests 2/3 completed"
-
-  - name: "E2E tests"
-    dependencies: ["Dockerize", "Backend Unit tests", "Frontend Unit tests"]
+        - name: Integration tests 1/3
+          commands:
+            - sleep 10
+            - echo "Integration tests 1/3 completed"
+        - name: Integration tests 2/3
+          commands:
+            - sleep 10
+            - echo "Integration tests 2/3 completed"
+  - name: E2E tests
+    dependencies:
+      - Dockerize
+      - Backend Unit tests
+      - Frontend Unit tests
     task:
       jobs:
-      - name: "E2E tests"
-        commands:
-          - echo "E2E completed"
-      - name: "Nightwatch 🦉"
-        commands:
-          - echo "Nightwatch done"
-
-  - name: "Long perf tests"
-    dependencies: ["Dockerize"]
+        - name: E2E tests
+          commands:
+            - echo "E2E completed"
+        - name: "Nightwatch \U0001F989"
+          commands:
+            - echo "Nightwatch done"
+  - name: Long perf tests
+    dependencies:
+      - Dockerize
     task:
       jobs:
-      - name: "Perf"
-        commands:
-          - sleep 60
-          - echo "Perf completed"
-
-  - name: "Release candidate"
-    dependencies: ["Integration tests", "Long perf tests", "Security checks", "E2E tests", "Test on Android", "Test on iOS", "Test on Web"]
+        - name: Perf
+          commands:
+            - sleep 60
+            - echo "Perf completed"
+  - name: Release candidate
+    dependencies:
+      - Integration tests
+      - Long perf tests
+      - Security checks
+      - E2E tests
+      - Test on Android
+      - Test on iOS
+      - Test on Web
     task:
       jobs:
-      - name: "Release"
-        commands:
-          - sleep 10
-          - echo "Release completed"
-      - name: "🚀 Google Play"
-        commands:
-          - echo "Release completed"
-      - name: "🚀 AppStore"
-        commands:
-          - echo "Release completed"
-      - name: "🚀 Web"
-        commands:
-          - echo "Rollout completed"
+        - name: Release
+          commands:
+            - sleep 10
+            - echo "Release completed"
+        - name: "\U0001F680 Google Play"
+          commands:
+            - echo "Release completed"
+        - name: "\U0001F680 AppStore"
+          commands:
+            - echo "Release completed"
+        - name: "\U0001F680 Web"
+          commands:
+            - echo "Rollout completed"
