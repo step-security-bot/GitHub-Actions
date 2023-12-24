@@ -1,0 +1,37 @@
+name: Baselime
+
+on:
+  push:
+    branches:
+    - main
+      Baselime
+  pull_request:
+    branches:
+    - main
+      Baselime
+
+defaults:
+  run:
+    shell: bash
+
+permissions: read-all
+
+jobs:
+  test:
+    name: Test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    steps:
+      - name: Setup baselime
+        uses: baselime/action-setup-baselime@v0.0.1
+        with:
+          baselime-api-key: ${{ secrets.BASELIME_API_KEY }} # Can be imported from Github Actions Secrets
+      - name: 📍Create marker
+        run: |
+          baselime mark \
+          --name Deployment \
+          --url "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+          --metadata '${{ toJson(github) }}' \
+          --service ${{ github.repository }}
