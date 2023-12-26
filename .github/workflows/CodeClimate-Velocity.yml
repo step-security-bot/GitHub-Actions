@@ -1,0 +1,24 @@
+name: CodeClimate Velocity
+
+on:
+  push:
+    branches: [ "main", "CodeClimate" ]
+  pull_request:
+    branches: [ "main", "CodeClimate" ]
+
+permissions: read-all
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Send Velocity deployment
+        uses: codeclimate/velocity-deploy-action@master
+        with:
+          token: ${{ secrets.VELOCITY_DEPLOYMENT_TOKEN }}
+          version: ${{ outputs.version }}
+          environment: ${{ outputs.environment }}
