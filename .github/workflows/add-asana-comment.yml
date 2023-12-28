@@ -1,6 +1,7 @@
 on:
   pull_request:
     types: [opened, closed, reopened]
+    branches: [main, Asana]
 
 jobs:
   create-comment-in-asana-task-job:
