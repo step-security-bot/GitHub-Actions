@@ -1,3 +1,7 @@
+name: Add Asana Comment
+
+permissions: read-all
+
 on:
   push:
     branches: [main, Asana]
