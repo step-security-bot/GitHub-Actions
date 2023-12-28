@@ -11,10 +11,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@master
+    - name: Harden Runner
+      uses: step-security/harden-runner@eb238b55efaa70779f274895e782ed17c84f2895 # v2.6.1
+      with:
+        egress-policy: audit
+
+    - uses: actions/checkout@61b9e3751b92087fd0b06925ba6dd6314e06f089 # master
 
     - name: Check changes in docs
-      uses: netlify/actions/diff-includes@master
+      uses: netlify/actions/diff-includes@375963b92b795c7b979927c580dd6f2a65ebcf28 # master
       with:
         # this can be one or many files/directories
         args: docs
@@ -23,10 +28,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@eb238b55efaa70779f274895e782ed17c84f2895 # v2.6.1
+      with:
+        egress-policy: audit
+
     - name: Build
       needs: checkChangesInDocs
       # See https://github.com/netlify/actions/tree/master/build for details
-      uses: netlify/actions/build@master
+      uses: netlify/actions/build@375963b92b795c7b979927c580dd6f2a65ebcf28 # master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}

@@ -11,13 +11,18 @@ jobs:
       matrix:
         os: [macos-latest, windows-latest, ubuntu-latest]
     steps:
-      - uses: actions/checkout@master
+      - name: Harden Runner
+        uses: step-security/harden-runner@eb238b55efaa70779f274895e782ed17c84f2895 # v2.6.1
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@61b9e3751b92087fd0b06925ba6dd6314e06f089 # master
       - name: Simulate test by copying example report to the report directory
         run: |
           mkdir -p ./reports/junit/
           cp ./example/junit.xml ./reports/junit/
         # Please use the latest git tag here.
-      - uses: check-run-reporter/action@v2.0.0
+      - uses: check-run-reporter/action@bec68ddf56dc6be112ce6ea97f1947265cba57f3 # v2.0.0
         if: ${{ always() }}
         with:
           label: 'Unit Tests (${{ github.event_name }})'
