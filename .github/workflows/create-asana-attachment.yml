@@ -1,3 +1,5 @@
+name: Create Asana attachment
+
 on:
   push:
     branches: [main, Ansa]
