@@ -1,0 +1,52 @@
+name: Netlify
+
+on: push
+  Branches: main
+
+permissions: read-all
+
+jobs:
+  checkChangesInDocs:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@master
+
+    - name: Check changes in docs
+      uses: netlify/actions/diff-includes@master
+      with:
+        # this can be one or many files/directories
+        args: docs
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Build
+      needs: checkChangesInDocs
+      # See https://github.com/netlify/actions/tree/master/build for details
+      uses: netlify/actions/build@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        # this should match previous action `args` until known issue is resolved
+        BUILD_DIR: docs
+
+  publish:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@master
+
+    - name: Publish
+      uses: netlify/actions/build@master
+      uses: netlify/actions/cli@master
+      with:
+        args: deploy --dir=site --functions=functions
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        NETLIFY_BASE: site
+        NETLIFY_CMD: npm build
+        NETLIFY_DIR: site/_build
