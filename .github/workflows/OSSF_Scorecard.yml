@@ -12,9 +12,9 @@ on:
   schedule:
     - cron: '17 22 * * 0'
   push:
-    branches: [main, OSSF-Scorecard]
+    branches: main
   pull_request:
-    branches: [main, OSSF-Scorecard]
+    branches: main
 
 # Declare default permissions as read only.
 permissions: read-all
